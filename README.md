@@ -1,6 +1,6 @@
 # Building infrastructure-as-code (IaC) with Azure Bicep - Part 2
 
-This is the repository for the LinkedIn Learning course `Building Infrastructure-as-Code (IaC) with Azure Bicep - Part 1`. The full course is available from [LinkedIn Learning][lil-course-url].
+This is the repository for the LinkedIn Learning course `Building Infrastructure-as-Code (IaC) with Azure Bicep - Part 2`. The full course is available from [LinkedIn Learning][lil-course-url].
 
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
