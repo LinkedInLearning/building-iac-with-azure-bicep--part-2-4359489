@@ -40,22 +40,6 @@ module storageServices 'modules/storage.bicep' = {
   }
 }
 
-// module networkService 'modules/azure-vnet.bicep' = {
-//   scope: resourceGroup(kinetecoResourceGroup.name)
-//   name: 'vnetDeployment-${uniqueString(kinetecoResourceGroup.id)}'
-//   params: {
-//     azureRegion: azureRegion
-//     addressPrefix: '10.0.0.0/16'
-//     projectEnvTag: projectEnvTag
-//     projectNameTag: projectNameTag
-//     subnet1Name: 'FirstSubnet'
-//     subnet1Prefix: '10.0.0.0/24'
-//     subnet2Name: 'SecondSubnet'
-//     subnet2Prefix: '10.0.1.0/24'
-//     vnetName: 'renewkinetecovnet'
-//   }
-// }
-
 module networkService 'modules/vnet.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'vnetDeployment-${uniqueString(kinetecoResourceGroup.id)}'
