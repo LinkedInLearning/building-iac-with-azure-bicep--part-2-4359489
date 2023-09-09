@@ -2,6 +2,8 @@
 az login --use-device-code
 az account show --query name
 
+az login --scope https://management.core.windows.net//.default
+
 # Set primary subscription if you have multiple
 az account set --subscription "Your subscription name"  
 
@@ -12,15 +14,15 @@ az group list -o table
 az group create -n 'bicep-part1-stg-eastus2' -l 'eastus2'
 az deployment group create -g 'bicep-part1-stg-eastus2' -f .\Chapter01\parent-child-storage.bicep -c
 
+# Deploy into subscription
 az deployment sub create -l eastus2 -f .\chapter-1\subscription-scope.bicep -c
 
-
-az account management-group create --name SecretRND --display-name "Secret R&D Projects"
-
-#switch to bash to add variables
+#Switch to bash to add variables
 managementGroupId="SecretRND"
 templateFile="managment-scope.bicep"
 today=$(date +"%d-%b-%Y")
 deploymentName="mg-scope-"$today
+
+az account management-group create --name $managementGroupId --display-name "Secret R&D Projects"
 
 az deployment mg create --management-group-id $managementGroupId --name $deploymentName --location eastus2 --template-file ./chapter-1/$templateFile
