@@ -36,7 +36,7 @@ jobs:
         scope: subscription
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
-        template: ./deploy/main.bicep
+        template: ./chapter-1/subscription-scope.bicep
         parameters: azureRegion=${{ env.REGION }}
         deploymentMode: Validate
 
