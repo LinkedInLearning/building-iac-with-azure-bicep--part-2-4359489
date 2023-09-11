@@ -38,10 +38,9 @@ jobs:
       with:
         creds: ${{ secrets.YOUR_CRED_JSON }}
     - uses: azure/arm-deploy@v1
-      name: Deploy website
+      name: Deploy resources
       with:
         failOnStdErr: false
         deploymentName: ${{ github.run_number }}
-        resourceGroupName: ${{ env.RESOURCEGROUP_NAME }}
         template: ./chapter-1/subscription-scope.bicep
         parameters: environmentType=${{ env.ENVIRONMENT_TYPE }}
