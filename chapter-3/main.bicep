@@ -16,7 +16,7 @@ resource kinetecoResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' =
   }
 }
 
-module appServices 'modules/web-app.bicep' = {
+module appServices '../chapter-1/modules/web-app.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'appDeployment-${uniqueString(kinetecoResourceGroup.id)}'
   params: {
@@ -29,7 +29,7 @@ module appServices 'modules/web-app.bicep' = {
   }
 }
 
-module storageServices 'modules/storage.bicep' = {
+module storageServices '../chapter-1/modules/storage.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'stgDeployment-${uniqueString(kinetecoResourceGroup.id)}'
   params: {
@@ -40,11 +40,20 @@ module storageServices 'modules/storage.bicep' = {
   }
 }
 
-module networkService 'modules/vnet.bicep' = {
+module networkService '../chapter-1/modules/vnet.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'vnetDeployment-${uniqueString(kinetecoResourceGroup.id)}'
   params: {
     location: azureRegion
     prefix: 'kineteco-dev'
+  }
+}
+
+module templateSpecCreation 'template-specs.bicep' = {
+  scope: resourceGroup(kinetecoResourceGroup.name)
+  name: 'storageSpec'
+  params: {
+    azureRegion: azureRegion
+    templateSpecVersionName: '0.1.0'
   }
 }
