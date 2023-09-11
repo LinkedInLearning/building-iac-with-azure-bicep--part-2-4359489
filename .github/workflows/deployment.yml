@@ -47,4 +47,4 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ./chapter-1/subscription-scope.bicep
-        parameters: environmentType=${{ env.ENVIRONMENT_TYPE }}
+        parameters: azureRegion=${{ env.REGION }}
