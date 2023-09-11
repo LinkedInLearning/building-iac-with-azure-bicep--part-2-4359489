@@ -17,12 +17,12 @@ az deployment group create -g 'bicep-part1-stg-eastus2' -f .\Chapter01\parent-ch
 # Deploy into subscription
 az deployment sub create -l eastus2 -f .\chapter-1\subscription-scope.bicep -c
 
-#Switch to bash to add variables
+#Switching to bash to add variables
 managementGroupId="SecretRND"
 templateFile="managment-scope.bicep"
 today=$(date +"%d-%b-%Y")
 deploymentName="mg-scope-"$today
 
+#Create and deploy policy into management group in your tenant
 az account management-group create --name $managementGroupId --display-name "Secret R&D Projects"
-
 az deployment mg create --management-group-id $managementGroupId --name $deploymentName --location eastus2 --template-file ./chapter-1/$templateFile
