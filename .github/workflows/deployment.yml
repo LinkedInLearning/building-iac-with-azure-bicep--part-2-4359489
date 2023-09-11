@@ -16,6 +16,7 @@ on:
 env:
   RESOURCEGROUP_NAME: BicepPart2-RG
   ENVIRONMENT_TYPE: Test
+  REGION: eastus2
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -43,6 +44,7 @@ jobs:
       with:
         failOnStdErr: false
         scope: subscription
+        region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ./chapter-1/subscription-scope.bicep
         parameters: environmentType=${{ env.ENVIRONMENT_TYPE }}
