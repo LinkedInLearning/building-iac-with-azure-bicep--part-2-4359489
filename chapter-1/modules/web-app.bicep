@@ -4,13 +4,13 @@
 param azureRegion string = resourceGroup().location
 
 @description('App service name for Dev env.')
-param appServiceAppDevName string // = 'myapp${uniqueString(resourceGroup().id)}'
+param appServiceAppDevName string
 
 @description('App service name for Test env.')
 param appServiceAppTestName string
 
 @description('App service plan name.')
-param appServicePlanName string // = 'myapp-plan'
+param appServicePlanName string
 
 param projectNameTag string
 param projectEnvTag string
