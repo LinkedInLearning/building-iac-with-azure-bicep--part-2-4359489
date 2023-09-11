@@ -54,6 +54,6 @@ module templateSpecCreation 'template-specs.bicep' = {
   name: 'storageSpec'
   params: {
     azureRegion: azureRegion
-    templateSpecVersionName: '0.1.0'
+    templateSpecVersionName: '0.1.1'
   }
 }
