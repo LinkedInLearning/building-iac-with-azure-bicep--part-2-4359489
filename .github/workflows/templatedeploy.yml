@@ -1,4 +1,4 @@
-name: templated-deploy-with-qa
+name: 03-templated-deploy-with-qa
 
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
