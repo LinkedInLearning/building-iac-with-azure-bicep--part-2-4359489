@@ -1,5 +1,5 @@
 # A basic workflow to help you get started with Actions
-name: deploy-to-subscription
+name: 01-deploy-to-subscription
 
 # Controls when the workflow will run
 on:
