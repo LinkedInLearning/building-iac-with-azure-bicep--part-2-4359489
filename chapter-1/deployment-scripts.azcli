@@ -11,18 +11,18 @@ az account set --subscription "Your subscription name"
 az group list -o table
 
 # Deploy parent-child-storage.bicep
-az group create -n 'bicep-part1-stg-eastus2' -l 'eastus2'
-az deployment group create -g 'bicep-part1-stg-eastus2' -f .\Chapter01\parent-child-storage.bicep -c
+az group create -n 'bicep-rg' -l 'eastus2'
+az deployment group create -g 'bicep-rg' -f .\storage.bicep -c
 
 # Deploy into subscription
 az deployment sub create -l eastus2 -f .\chapter-1\subscription-scope.bicep -c
 
 #Switching to bash to add variables
-managementGroupId="SecretRND"
+managementGroupId="SecretRND3"
 templateFile="managment-scope.bicep"
 today=$(date +"%d-%b-%Y")
 deploymentName="mg-scope-"$today
 
 #Create and deploy policy into management group in your tenant
-az account management-group create --name $managementGroupId --display-name "Secret R&D Projects"
+az account management-group create --name $managementGroupId --display-name "Secret R&D Project-3"
 az deployment mg create --management-group-id $managementGroupId --name $deploymentName --location eastus2 --template-file ./chapter-1/$templateFile
