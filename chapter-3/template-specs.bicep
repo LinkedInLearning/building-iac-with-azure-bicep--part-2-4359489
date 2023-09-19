@@ -1,5 +1,5 @@
 param azureRegion string = resourceGroup().location
-param templateSpecVersionName string = '0.1'
+param templateSpecVersionName string = '0.1.0'
 
 resource tempSpecStorage 'Microsoft.Resources/templateSpecs@2022-02-01' = {
   name: 'storageSpec'
@@ -25,7 +25,6 @@ resource createTemplateSpecVersion 'Microsoft.Resources/templateSpecs/versions@2
           'allowedValues': [
             'Standard_LRS'
             'Standard_GRS'
-            'Standard_ZRS'
             'Premium_LRS'
           ]
         }

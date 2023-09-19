@@ -2,14 +2,11 @@ name: 03-templated-deploy-with-qa
 
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  # push:
-  #   branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 # Define environment parameters
 env:
-  RESOURCEGROUP_NAME: BicepPart2-RG
   ENVIRONMENT_TYPE: Test
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-3/main.bicep
