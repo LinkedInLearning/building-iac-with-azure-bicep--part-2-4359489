@@ -14,7 +14,6 @@ on:
 
 # Define environment parameters
 env:
-  RESOURCEGROUP_NAME: BicepPart2-RG
   ENVIRONMENT_TYPE: Test
   REGION: eastus2
 
