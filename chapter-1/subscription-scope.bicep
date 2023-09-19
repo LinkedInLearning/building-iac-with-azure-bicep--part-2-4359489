@@ -5,7 +5,6 @@ param azureRegion string = 'eastus2'
 param resourceGroupName string = 'rg-kineteco-dep1-${azureRegion}'
 param projectNameTag string = 'Renewable Energy Path'
 param projectEnvTag string = 'Demo'
-param newMeter string = 'test'
 
 @description('Resource Group for Application workloads.')
 resource kinetecoResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
