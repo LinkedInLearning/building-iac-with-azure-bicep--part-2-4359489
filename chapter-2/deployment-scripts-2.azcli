@@ -3,7 +3,7 @@
 az login
 
 # Show current subscription (use 'Az account set' to change subscription)
-az account show
+az account show --query name
 
 
 # Create new repository secret 

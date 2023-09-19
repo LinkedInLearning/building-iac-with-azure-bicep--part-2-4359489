@@ -1,34 +1,36 @@
 {
-    "analyzers": {
-      "core": {
-        "enabled": true,
-        "verbose": true,
-        "rules": {
-          "no-hardcoded-env-urls": {
-            "level":"warning"
-          },
-          "no-unused-params": {
-            "level":"warning"
-          },
-          "no-unused-vars": {
-            "level":"warning"
-          },
-          "no-unused-existing-resources":{
-            "level": "warning"
-          },
-          "prefer-interpolation": {
-            "level": "warning"
-          },
-          "secure-parameter-default": {
-            "level": "error"
-          },
-          "simplify-interpolation": {
-            "level": "warning"
-          },
-          "adminusername-should-not-be-literal":{
-            "level": "warning"
-          }
+  // See https://aka.ms/bicep/config for more information on Bicep configuration options
+  // Press CTRL+SPACE/CMD+SPACE at any location to see Intellisense suggestions
+  "analyzers": {
+    "core": {
+      "enabled": true,
+      "verbose": true,
+      "rules": {
+        "no-hardcoded-env-urls": {
+          "level":"warning"
+        },
+        "no-unused-params": {
+          "level":"error"
+        },
+        "no-unused-vars": {
+          "level": "info"
+        },
+        "no-unused-existing-resources":{
+          "level": "warning"
+        },
+        "prefer-interpolation": {
+          "level": "warning"
+        },
+        "secure-parameter-default": {
+          "level": "error"
+        },
+        "simplify-interpolation": {
+          "level": "warning"
+        },
+        "adminusername-should-not-be-literal":{
+          "level": "warning"
         }
       }
     }
   }
+}
