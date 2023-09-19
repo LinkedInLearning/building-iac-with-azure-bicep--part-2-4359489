@@ -1,1 +1,42 @@
 # Chapter-2 scripts
+# Log into Azure
+az login
+
+# Show current subscription (use 'Az account set' to change subscription)
+az account show
+
+
+# Create new repository secret 
+# set variables
+$subscriptionId=$(az account show --query id -o tsv)
+$appName="GitHub-BicepTest-Actions"
+$RBACRole="Contributor"
+
+# Create AAD App and Service Principal and assign RBAC Role
+az ad sp create-for-rbac --name $appName `
+    --role $RBACRole `
+    --scopes /subscriptions/$subscriptionId `
+    --sdk-auth
+
+# Expected output
+# {
+#   "clientId": "00000",
+#   "clientSecret": "lYO8Q~VvCVuVUV6hMb5z_werewr324324234.",       
+#   "subscriptionId": "e1dbf1c1-18wefewe-dsfsdf32",
+#   "tenantId": "xxxxyyy-23234-234234-23423423",
+#   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+#   "resourceManagerEndpointUrl": "https://management.azure.com/",    
+#   "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+#   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+#   "galleryEndpointUrl": "https://gallery.azure.com/",
+#   "managementEndpointUrl": "https://management.core.windows.net/"
+# }
+
+
+### Your "secrets.YOUR_CRED_JSON" entry template
+# {
+#    "clientId": "xxx",
+#    "clientSecret": "yyy",       
+#    "subscriptionId": "aaaaaa",
+#    "tenantId": "bbbbbbbb"
+# }
