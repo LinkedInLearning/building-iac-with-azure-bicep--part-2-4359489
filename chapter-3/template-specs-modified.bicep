@@ -33,6 +33,7 @@ resource createTemplateSpecVersion 'Microsoft.Resources/templateSpecs/versions@2
         'storageAccountName': {
           'type': 'string'
           'defaultValue': 'kinetecostg090078'
+        }
       }
       'resources': [
         {
@@ -48,5 +49,4 @@ resource createTemplateSpecVersion 'Microsoft.Resources/templateSpecs/versions@2
       ]
     }
   }
-}
 }
