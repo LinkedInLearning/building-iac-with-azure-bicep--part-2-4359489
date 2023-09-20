@@ -33,6 +33,7 @@ resource appServiceAppDev 'Microsoft.Web/sites@2020-06-01' = {
   location: azureRegion
   properties: {
     serverFarmId: appServicePlan.id
+    httpsOnly: true
   }
   tags:{
     Project: projectNameTag
@@ -57,4 +58,4 @@ resource appServiceAppTest 'Microsoft.Web/sites@2020-06-01' = {
 output webAppHostDev string = appServiceAppDev.properties.defaultHostName
 
 @description('Provides a deployed test apps host name.')
-output webAppHostTest string = appServiceAppDev.properties.defaultHostName
+output webAppHostTest string = appServiceAppTest.properties.defaultHostName
