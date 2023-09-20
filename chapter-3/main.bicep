@@ -49,7 +49,7 @@ module networkService '../chapter-1/modules/vnet.bicep' = {
   }
 }
 
-module templateSpecCreation 'template-specs-modified.bicep' = {
+module templateSpecCreation 'template-spec-storage.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'storageSpec'
   params: {

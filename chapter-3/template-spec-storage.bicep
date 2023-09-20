@@ -26,13 +26,13 @@ resource createTemplateSpecVersion 'Microsoft.Resources/templateSpecs/versions@2
             'Standard_LRS'
             'Standard_GRS'
             'Standard_ZRS'
-            'Premium_ZRS'
             'Premium_LRS'
+            'Premium_ZRS'
           ]
         }
-        'storageAccountName': {
-          'type': 'string'
-          'defaultValue': 'kinetecostg090078'
+        'storageAccountName':{
+         'type': 'string'
+         'defaultValue': 'kinetecostg092284' 
         }
       }
       'resources': [
