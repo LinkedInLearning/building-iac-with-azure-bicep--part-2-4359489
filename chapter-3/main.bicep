@@ -49,11 +49,11 @@ module networkService '../chapter-1/modules/vnet.bicep' = {
   }
 }
 
-module templateSpecCreation 'template-specs.bicep' = {
+module templateSpecCreation 'template-specs-modified.bicep' = {
   scope: resourceGroup(kinetecoResourceGroup.name)
   name: 'storageSpec'
   params: {
     azureRegion: azureRegion
-    templateSpecVersionName: '0.1.0'
+    templateSpecVersionName: '0.2.0'
   }
 }
