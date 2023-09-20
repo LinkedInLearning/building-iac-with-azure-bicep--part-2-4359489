@@ -33,7 +33,7 @@ resource createTemplateSpecVersion 'Microsoft.Resources/templateSpecs/versions@2
         {
           'type': 'Microsoft.Storage/storageAccounts'
           'apiVersion': '2019-06-01'
-          'name': 'kinetecostg10034'
+          'name': 'kinetecostg09194'
           'location': resourceGroup().location
           'kind': 'StorageV2'
           'sku': {
