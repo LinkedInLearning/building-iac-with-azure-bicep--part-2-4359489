@@ -11,6 +11,7 @@ env:
   ENVIRONMENT_TYPE: Test
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-4/main.bicep
+  TEST_LOCATION: chapter-4/webapp.tests.ps1
 
 jobs:
   lint:
@@ -67,7 +68,7 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         $container = New-PesterContainer `
-          -Path 'chapter-4/webapp.tests.ps1' `
+          -Path '${{ env.TEST_LOCATION }}' `
           -Data @{ HostNameUrl = '${{needs.deploy.outputs.appServiceAppHostName}}' }
         Invoke-Pester `
           -Container $container `
