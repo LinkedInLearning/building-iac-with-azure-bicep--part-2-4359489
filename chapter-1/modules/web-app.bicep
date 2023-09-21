@@ -33,7 +33,7 @@ resource appServiceAppDev 'Microsoft.Web/sites@2020-06-01' = {
   location: azureRegion
   properties: {
     serverFarmId: appServicePlan.id
-    httpsOnly: true
+    httpsOnly: false
   }
   tags:{
     Project: projectNameTag
@@ -46,7 +46,7 @@ resource appServiceAppTest 'Microsoft.Web/sites@2020-06-01' = {
   location: azureRegion
   properties: {
     serverFarmId: appServicePlan.id
-    httpsOnly: true
+    httpsOnly: false
   }
   tags:{
     Project: projectNameTag
