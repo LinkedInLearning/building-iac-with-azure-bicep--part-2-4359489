@@ -36,7 +36,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }}, environmentType=${{ env.ENVIRONMENT_TYPE }}
+        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
         deploymentMode: Validate
 
   deploy:
@@ -59,7 +59,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }}, environmentType=${{ env.ENVIRONMENT_TYPE }}
+        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
 
   smoke-test:
     runs-on: ubuntu-latest
