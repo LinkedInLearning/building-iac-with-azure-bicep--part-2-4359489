@@ -1,3 +1,4 @@
+// Test run after rg removal
 targetScope = 'subscription'
 
 @description('Azure region location.')
