@@ -1,0 +1,78 @@
+# Test changes on config-ma updates
+name: 05-deploy-with-tests-param-files
+
+on:
+  # Temp disable
+  # pull_request:
+  #   branches: [ "main" ]
+  workflow_dispatch:
+
+# Define environment parameters
+env:
+  ENVIRONMENT_TYPE: prod
+  REGION: eastus2
+  MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
+  TEST_LOCATION: chapter-4/webapp.tests.ps1
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run Bicep build command
+      run: az bicep build --file ${{ env.MAIN_DEPLOYMENT_LOCATION }}
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: azure/login@v1
+      name: Sign in to Azure
+      with:
+        creds: ${{ secrets.YOUR_CRED_JSON }}
+    - uses: azure/arm-deploy@v1
+      name: Run preflight validation
+      with:
+        scope: subscription
+        region: ${{ env.REGION }}
+        deploymentName: ${{ github.run_number }}
+        template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
+        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
+        deploymentMode: Validate
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint, validate]
+    outputs:
+      appServiceAppHostName: ${{ steps.deploy.outputs.appServiceAppHostName }}
+    steps:
+    - uses: actions/checkout@v3
+    - uses: azure/login@v1
+      name: Sign in to Azure
+      with:
+        creds: ${{ secrets.YOUR_CRED_JSON }}
+    - uses: azure/arm-deploy@v1
+      id: deploy
+      name: Deploy resources
+      with:
+        failOnStdErr: false
+        scope: subscription
+        region: ${{ env.REGION }}
+        deploymentName: ${{ github.run_number }}
+        template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
+        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
+
+  smoke-test:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        $container = New-PesterContainer `
+          -Path '${{ env.TEST_LOCATION }}' `
+          -Data @{ HostNameUrl = '${{needs.deploy.outputs.appServiceAppHostName}}' }
+        Invoke-Pester `
+          -Container $container `
+          -CI
+      name: Run smoke tests
+      shell: pwsh
