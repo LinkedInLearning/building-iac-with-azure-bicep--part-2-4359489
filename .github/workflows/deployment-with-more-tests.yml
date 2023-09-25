@@ -10,7 +10,7 @@ on:
 env:
   ENVIRONMENT_TYPE: Test
   REGION: eastus2
-  MAIN_DEPLOYMENT_LOCATION: chapter-4/main.bicep
+  MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
   TEST_LOCATION: chapter-4/webapp.tests.ps1
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }}
+        parameters: azureRegion=${{ env.REGION }}, environmentType=${{ env.ENVIRONMENT_TYPE }}
         deploymentMode: Validate
 
   deploy:
@@ -59,7 +59,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }}
+        parameters: azureRegion=${{ env.REGION }}, environmentType=${{ env.ENVIRONMENT_TYPE }}
 
   smoke-test:
     runs-on: ubuntu-latest
