@@ -1,10 +1,11 @@
 # Test changes on config-ma updates
-name: 04-deployment-with-more-tests
+name: 05-deploy-with-tests-param-files
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  pull_request:
-    branches: [ "main" ]
+  # Temp disable
+  # pull_request:
+  #   branches: [ "main" ]
+  workflow_dispatch:
 
 # Define environment parameters
 env:
