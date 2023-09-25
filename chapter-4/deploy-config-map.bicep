@@ -51,7 +51,7 @@ var environmentConfigurationMap = {
   prod: {
     appServicePlan: {
       sku: {
-        name: 'P2V3'
+        name: 'S1'
         capacity: 3
       }
     }
