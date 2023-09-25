@@ -1,4 +1,4 @@
-# Test the workflow
+# Test changes on config-ma updates
 name: 04-deployment-with-more-tests
 
 on:
