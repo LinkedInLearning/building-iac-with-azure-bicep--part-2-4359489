@@ -15,15 +15,12 @@ param storageSkuName string
 param storageConfig object = {
   marketing: {
     name: '${accountNamePrefix}marketing'
-    skuName: storageSkuName
   }
   accounting: {
     name: '${accountNamePrefix}accounting'
-    skuName: storageSkuName
   }
   itoperations: {
     name: '${accountNamePrefix}itoperations'
-    skuName: storageSkuName
   }
 }
 
@@ -31,7 +28,7 @@ resource createKinetEcoStorages 'Microsoft.Storage/storageAccounts@2021-02-01' =
   name: '${config.value.name}'
   location: azureRegion
   sku: {
-    name: config.value.skuName
+    name: storageSkuName
   }
   kind: 'StorageV2'
   tags:{
