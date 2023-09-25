@@ -8,7 +8,7 @@ on:
 
 # Define environment parameters
 env:
-  ENVIRONMENT_TYPE: Test
+  ENVIRONMENT_TYPE: dev
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
   TEST_LOCATION: chapter-4/webapp.tests.ps1

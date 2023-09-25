@@ -3,16 +3,17 @@ targetScope = 'subscription'
 
 @description('Azure region location.')
 param azureRegion string = 'eastus2'
-param resourceGroupName string = 'rg-kineteco-dep1-${azureRegion}'
 param projectNameTag string = 'Renewable Energy Path'
 param projectEnvTag string = 'Demo'
 
 @allowed([
-  'Development'
-  'Test'
-  'Production'
+  'dev'
+  'test'
+  'prod'
 ])
-param environmentType string = 'Development'
+param environmentType string = 'dev'
+
+param resourceGroupName string = 'rg-kineteco-${environmentType}-${azureRegion}'
 
 var environmentConfigurationMap = {
   Development: {
@@ -81,9 +82,9 @@ module appServices '../chapter-4/modules/web-app.bicep' = {
   params: {
     azureRegion: azureRegion
     appServicePlanSKU: environmentConfigurationMap[environmentType].appServicePlan.sku
-    appServiceAppDevName: 'appDev${uniqueString(kinetecoResourceGroup.id)}'
-    appServiceAppTestName: 'appTest${uniqueString(kinetecoResourceGroup.id)}'
-    appServicePlanName: 'kineteco-appServicePlan'
+    appServiceAppDevName: 'appDev${uniqueString(kinetecoResourceGroup.id)}-${environmentType}'
+    appServiceAppTestName: 'appTest${uniqueString(kinetecoResourceGroup.id)}-${environmentType}'
+    appServicePlanName: 'kineteco-appServicePlan-${environmentType}'
     projectEnvTag: projectNameTag
     projectNameTag: projectEnvTag
   }
@@ -94,7 +95,7 @@ module storageServices '../chapter-4/modules/storage.bicep' = {
   name: 'stgDeployment-${uniqueString(kinetecoResourceGroup.id)}'
   params: {
     azureRegion: azureRegion
-    accountNamePrefix: 'kstg1001'
+    accountNamePrefix: 'k101${environmentType}'
     storageSkuName: environmentConfigurationMap[environmentType].storageAccount.sku.name
     projectEnvTag: projectNameTag
     projectNameTag: projectEnvTag
@@ -106,7 +107,7 @@ module networkService '../chapter-4/modules/vnet.bicep' = {
   name: 'vnetDeployment-${uniqueString(kinetecoResourceGroup.id)}'
   params: {
     location: azureRegion
-    prefix: 'kineteco-dev'
+    prefix: 'kineteco-${environmentType}'
   }
 }
 
