@@ -16,7 +16,7 @@ param environmentType string = 'dev'
 param resourceGroupName string = 'rg-kineteco-${environmentType}-${azureRegion}'
 
 var environmentConfigurationMap = {
-  Development: {
+  dev: {
     appServicePlan: {
       sku: {
         name: 'F1'
@@ -32,7 +32,7 @@ var environmentConfigurationMap = {
       }
     }
   }
-  Test: {
+  test: {
     appServicePlan: {
       sku: {
         name: 'F1'
@@ -48,7 +48,7 @@ var environmentConfigurationMap = {
       }
     }
   }
-  Production: {
+  prod: {
     appServicePlan: {
       sku: {
         name: 'P2V3'
