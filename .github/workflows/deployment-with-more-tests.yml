@@ -1,4 +1,4 @@
-# Test changes on config-ma updates
+# Test changes on config with test settings
 name: 04-deployment-with-more-tests
 
 on:
@@ -8,7 +8,7 @@ on:
 
 # Define environment parameters
 env:
-  ENVIRONMENT_TYPE: dev
+  ENVIRONMENT_TYPE: test
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
   TEST_LOCATION: chapter-4/webapp.tests.ps1
