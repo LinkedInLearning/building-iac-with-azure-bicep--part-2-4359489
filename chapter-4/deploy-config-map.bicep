@@ -1,4 +1,4 @@
-// Test run after rg removal
+// Run the changes for dev
 targetScope = 'subscription'
 
 @description('Azure region location.')
