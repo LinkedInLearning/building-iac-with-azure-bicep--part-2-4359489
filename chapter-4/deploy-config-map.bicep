@@ -2,16 +2,16 @@
 targetScope = 'subscription'
 
 @description('Azure region location.')
-param azureRegion string = 'eastus2'
+param azureRegion string // = 'eastus2' remove default
 param projectNameTag string = 'Renewable Energy Path'
-param projectEnvTag string = 'Demo'
+param projectEnvTag string  // = 'Demo' remove default
 
 @allowed([
   'dev'
   'test'
   'prod'
 ])
-param environmentType string = 'dev'
+param environmentType string  // = 'dev' remove default
 
 param resourceGroupName string = 'rg-kineteco-${environmentType}-${azureRegion}'
 

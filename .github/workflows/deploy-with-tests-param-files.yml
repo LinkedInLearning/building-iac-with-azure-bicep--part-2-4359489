@@ -9,10 +9,11 @@ on:
 
 # Define environment parameters
 env:
-  ENVIRONMENT_TYPE: prod
+  ENVIRONMENT_TYPE: dev
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
   TEST_LOCATION: chapter-4/webapp.tests.ps1
+  PARAM_FILE: chapter4/params/deploy-config-map.dev.bicepparam
 
 jobs:
   lint:
@@ -37,7 +38,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
+        parameters: ${{ env.PARAM_FILE }}
         deploymentMode: Validate
 
   deploy:
@@ -60,7 +61,7 @@ jobs:
         region: ${{ env.REGION }}
         deploymentName: ${{ github.run_number }}
         template: ${{ env.MAIN_DEPLOYMENT_LOCATION }}
-        parameters: azureRegion=${{ env.REGION }} environmentType=${{ env.ENVIRONMENT_TYPE }}
+        parameters: ${{ env.PARAM_FILE }}
 
   smoke-test:
     runs-on: ubuntu-latest
