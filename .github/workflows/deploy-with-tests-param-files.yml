@@ -1,4 +1,4 @@
-# Test changes on config-ma updates
+# Adding param file location
 name: 05-deploy-with-tests-param-files
 
 on:
