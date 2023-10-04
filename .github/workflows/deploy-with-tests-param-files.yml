@@ -13,7 +13,7 @@ env:
   REGION: eastus2
   MAIN_DEPLOYMENT_LOCATION: chapter-4/deploy-config-map.bicep
   TEST_LOCATION: chapter-4/webapp.tests.ps1
-  PARAM_FILE: chapter4/params/deploy-config-map.dev.parameters.json
+  PARAM_FILE: chapter4/deploy-config-map.bicepparam
 
 jobs:
   lint:
